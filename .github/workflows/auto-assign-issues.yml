@@ -1,11 +1,13 @@
+name: 'Auto Author Assign'
+
 on:
   issues:
-    types: [opened]
-name: Issues
+    types: [opened, reopened]
+
 jobs:
-  assignAuthor:
-    name: Assign author to issue
+  assign-author:
     runs-on: ubuntu-latest
     steps:
-      - name: Assign author to issue
-        uses: technote-space/assign-author@v1
+      - uses: toshimaru/auto-author-assign@v1.2.0
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
